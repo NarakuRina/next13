@@ -75,10 +75,10 @@ export const ServerSearch = ({
         </kbd>
       </button>
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Search all channels and members" />
+        <CommandInput placeholder="Tìm mọi kênh và thành viên" />
         <CommandList>
           <CommandEmpty>
-            No Results found
+            Không tìm thấy kết quả nào
           </CommandEmpty>
           {data.map(({ label, type, data }) => {
             if (!data?.length) return null;

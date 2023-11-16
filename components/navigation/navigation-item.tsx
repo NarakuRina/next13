@@ -46,7 +46,7 @@ export const NavigationItem = ({
           <Image
             fill
             src={imageUrl}
-            alt="Channel"
+            alt="Kênh"
           />
         </div>
       </button>

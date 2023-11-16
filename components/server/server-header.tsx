@@ -56,7 +56,7 @@ export const ServerHeader = ({
             onClick={() => onOpen("invite", { server })}
             className="text-indigo-600 dark:text-indigo-400 px-3 py-2 text-sm cursor-pointer"
           >
-            Invite People
+            Mời Mọi Người
             <UserPlus className="h-4 w-4 ml-auto" />
           </DropdownMenuItem>
         )}
@@ -65,7 +65,7 @@ export const ServerHeader = ({
             onClick={() => onOpen("editServer", { server })}
             className="px-3 py-2 text-sm cursor-pointer"
           >
-            Server Settings
+            Quản Lý Máy Chủ
             <Settings className="h-4 w-4 ml-auto" />
           </DropdownMenuItem>
         )}
@@ -74,7 +74,7 @@ export const ServerHeader = ({
             onClick={() => onOpen("members", { server })}
             className="px-3 py-2 text-sm cursor-pointer"
           >
-            Manage Members
+            Quản Lý Thành Viên
             <Users className="h-4 w-4 ml-auto" />
           </DropdownMenuItem>
         )}
@@ -83,7 +83,7 @@ export const ServerHeader = ({
             onClick={() => onOpen("createChannel")}
             className="px-3 py-2 text-sm cursor-pointer"
           >
-            Create Channel
+            Tạo Kênh
             <PlusCircle className="h-4 w-4 ml-auto" />
           </DropdownMenuItem>
         )}
@@ -95,7 +95,7 @@ export const ServerHeader = ({
             onClick={() => onOpen("deleteServer", { server })}
             className="text-rose-500 px-3 py-2 text-sm cursor-pointer"
           >
-            Delete Server
+            Xóa Máy Chủ
             <Trash className="h-4 w-4 ml-auto" />
           </DropdownMenuItem>
         )}
@@ -104,7 +104,7 @@ export const ServerHeader = ({
             onClick={() => onOpen("leaveServer", { server })}
             className="text-rose-500 px-3 py-2 text-sm cursor-pointer"
           >
-            Leave Server
+            Rời Khỏi Máy Chủ
             <LogOut className="h-4 w-4 ml-auto" />
           </DropdownMenuItem>
         )}
