@@ -152,7 +152,7 @@ export const ChatItem = ({
               href={fileUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative aspect-square rounded-md mt-2 overflow-hidden border flex items-center bg-secondary h-48 w-48"
+              className="relative aspect-square rounded-full mt-2 overflow-hidden border flex items-center bg-secondary h-48 w-48"
             >
               <Image
                 src={fileUrl}
@@ -163,7 +163,7 @@ export const ChatItem = ({
             </a>
           )}
           {isPDF && (
-            <div className="relative flex items-center p-2 mt-2 rounded-md bg-background/10">
+            <div className="relative flex items-center p-2 mt-2 rounded-full bg-background/10">
               <FileIcon className="h-10 w-10 fill-indigo-200 stroke-indigo-400" />
               <a 
                 href={fileUrl}
@@ -183,7 +183,7 @@ export const ChatItem = ({
               {content}
               {isUpdated && !deleted && (
                 <span className="text-[10px] mx-2 text-zinc-500 dark:text-zinc-400">
-                  (edited)
+                  (đã chỉnh sửa)
                 </span>
               )}
             </p>
@@ -203,7 +203,7 @@ export const ChatItem = ({
                             <Input
                               disabled={isLoading}
                               className="p-2 bg-zinc-200/90 dark:bg-zinc-700/75 border-none border-0 focus-visible:ring-0 focus-visible:ring-offset-0 text-zinc-600 dark:text-zinc-200"
-                              placeholder="Edited message"
+                              placeholder="Tin nhắn đã chỉnh sửa"
                               {...field}
                             />
                           </div>

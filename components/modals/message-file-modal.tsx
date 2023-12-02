@@ -77,10 +77,10 @@ export const MessageFileModal = () => {
       <DialogContent className="bg-white text-black p-0 overflow-hidden">
         <DialogHeader className="pt-8 px-6">
           <DialogTitle className="text-2xl text-center font-bold">
-            Add an attachment
+            Tệp đính kém
           </DialogTitle>
           <DialogDescription className="text-center text-zinc-500">
-            Send a file as a message
+            Gửi một tệp đính kèm dưới dạng tin nhắn
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -106,7 +106,7 @@ export const MessageFileModal = () => {
             </div>
             <DialogFooter className="bg-gray-100 px-6 py-4">
               <Button variant="primary" disabled={isLoading}>
-                Send
+                Gửi
               </Button>
             </DialogFooter>
           </form>

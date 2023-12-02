@@ -111,7 +111,7 @@ export const ChatMessages = ({
               onClick={() => fetchNextPage()}
               className="text-zinc-500 hover:text-zinc-600 dark:text-zinc-400 text-xs my-4 dark:hover:text-zinc-300 transition"
             >
-              Load previous messages
+              Tải các tin nhắn cũ hơn
             </button>
           )}
         </div>
