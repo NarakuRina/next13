@@ -102,6 +102,8 @@ model Message {
 
   fileUrl String? @db.Text
 
+  pRate Float @db.Float
+
   memberId String
   member Member @relation(fields: [memberId], references: [id], onDelete: Cascade)
 

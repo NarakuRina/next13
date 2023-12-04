@@ -216,7 +216,7 @@ export const ChatItem = ({
                   </Button>
               </form>
               <span className="text-[10px] mt-1 text-zinc-400">
-                Press escape to cancel, enter to save
+                Nhấn Esc để thoát, Enter để lưu
               </span>
             </Form>
           )}

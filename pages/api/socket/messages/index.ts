@@ -1,15 +1,37 @@
-import { NextApiRequest } from "next";
+import axios, { AxiosResponse } from 'axios';
+import { NextApiRequest } from 'next';
 
 import { NextApiResponseServerIo } from "@/types";
 import { currentProfilePages } from "@/lib/current-profile-pages";
 import { db } from "@/lib/db";
 
+const getPerspectiveAPIScore = async (text: string): Promise<number> => {
+  try {
+    const url = 'https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=AIzaSyDG1eIgSjPYcv85sK7VsqY2N3E_DGz0LMA';
+    
+    const requestBody = {
+      comment: { text },
+      requestedAttributes: {
+        TOXICITY: {},
+      },
+    };
+    
+    const response: AxiosResponse = await axios.post(url, requestBody);
+    const toxicityScore: number = response.data.attributeScores.TOXICITY.summaryScore.value || 0;
+    
+    return toxicityScore;
+  } catch (error) {
+    console.error('Error!', error);
+    return 0;
+  }
+};
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponseServerIo,
 ) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
@@ -68,20 +90,23 @@ export default async function handler(
       return res.status(404).json({ message: "Member not found" });
     }
 
+    const toxicityRating = await getPerspectiveAPIScore(content);
+
     const message = await db.message.create({
       data: {
         content,
         fileUrl,
-        channelId: channelId as string,
+        pRate: toxicityRating,
         memberId: member.id,
+        channelId: channelId as string,
       },
       include: {
         member: {
           include: {
             profile: true,
-          }
-        }
-      }
+          },
+        },
+      },
     });
 
     const channelKey = `chat:${channelId}:messages`;

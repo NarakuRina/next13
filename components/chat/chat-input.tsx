@@ -18,6 +18,9 @@ import { Input } from "@/components/ui/input";
 import { useModal } from "@/hooks/use-modal-store";
 import { EmojiPicker } from "@/components/emoji-picker";
 
+const PapiKey = process.env.PERSPECTIVE_API_KEY;
+const PendPoint = process.env.PERSPECTIVE_END_POINT;
+
 interface ChatInputProps {
   apiUrl: string;
   query: Record<string, any>;
@@ -49,6 +52,7 @@ export const ChatInput = ({
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
+
       const url = qs.stringifyUrl({
         url: apiUrl,
         query,
