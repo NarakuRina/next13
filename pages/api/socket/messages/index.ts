@@ -7,7 +7,7 @@ import { db } from "@/lib/db";
 
 const getPerspectiveAPIScore = async (text: string): Promise<number> => {
   try {
-    const url = process.env.PERSPECTIVE_URL;
+    const url = process.env.PERSPECTIVE_URL ?? 'null';
     
     const requestBody = {
       comment: { text },
