@@ -16,7 +16,7 @@ type RequestBody = {
 const getPerspectiveAPIScore = async (text: string): Promise<number> => {
   try {
     // Your Comment Analyzer API URL
-    const url = 'https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=AIzaSyDG1eIgSjPYcv85sK7VsqY2N3E_DGz0LMA';
+    const url = process.env.PERSPECTIVE_URL;
 
     const requestBody: RequestBody = {
       comment: { text },
