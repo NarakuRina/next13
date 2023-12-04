@@ -7,7 +7,7 @@ import { db } from "@/lib/db";
 
 const getPerspectiveAPIScore = async (text: string): Promise<number> => {
   try {
-    const url = 'https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=AIzaSyDG1eIgSjPYcv85sK7VsqY2N3E_DGz0LMA';
+    const url = process.env.PERSPECTIVE_URL;
     
     const requestBody = {
       comment: { text },
