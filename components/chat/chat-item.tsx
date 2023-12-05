@@ -37,6 +37,7 @@ interface ChatItemProps {
   isUpdated: boolean;
   socketUrl: string;
   socketQuery: Record<string, string>;
+  pRate: number | null;
 };
 
 const roleIconMap = {
@@ -59,7 +60,8 @@ export const ChatItem = ({
   currentMember,
   isUpdated,
   socketUrl,
-  socketQuery
+  socketQuery,
+  pRate
 }: ChatItemProps) => {
   const [isEditing, setIsEditing] = useState(false);
   const { onOpen } = useModal();
@@ -176,17 +178,22 @@ export const ChatItem = ({
             </div>
           )}
           {!fileUrl && !isEditing && (
-            <p className={cn(
-              "text-sm text-zinc-600 dark:text-zinc-300",
-              deleted && "italic text-zinc-500 dark:text-zinc-400 text-xs mt-1"
-            )}>
-              {content}
-              {isUpdated && !deleted && (
-                <span className="text-[10px] mx-2 text-zinc-500 dark:text-zinc-400">
-                  (đã chỉnh sửa)
+            <div className="flex items-center">
+              <p className={cn(
+                "text-sm text-zinc-600 dark:text-zinc-300",
+                deleted && "italic text-zinc-500 dark:text-zinc-400 text-xs mt-1"
+              )}>
+                {content}
+                {isUpdated && !deleted && (
+                  <span className="text-[10px] mx-2 text-zinc-500 dark:text-zinc-400">
+                    (đã chỉnh sửa)
+                  </span>
+                )}
+                <span className="text-[10px] ml-2 text-xs text-red-500">
+                  {pRate !== null ? (pRate * 100).toFixed(2) : 'N/A'}
                 </span>
-              )}
-            </p>
+              </p>
+            </div>
           )}
           {!fileUrl && isEditing && (
             <Form {...form}>
@@ -212,7 +219,7 @@ export const ChatItem = ({
                     )}
                   />
                   <Button disabled={isLoading} size="sm" variant="primary">
-                    Save
+                    Lưu
                   </Button>
               </form>
               <span className="text-[10px] mt-1 text-zinc-400">

@@ -123,6 +123,7 @@ export const ChatMessages = ({
               <ChatItem
                 key={message.id}
                 id={message.id}
+                pRate={message.pRate}
                 currentMember={member}
                 member={message.member}
                 content={message.content}
