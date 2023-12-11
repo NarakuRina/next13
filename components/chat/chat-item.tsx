@@ -37,7 +37,6 @@ interface ChatItemProps {
   isUpdated: boolean;
   socketUrl: string;
   socketQuery: Record<string, string>;
-  score: number | null;
   pRate: number | null;
 };
 
@@ -149,7 +148,7 @@ export const ChatItem = ({
               </ActionTooltip>
             </div>
             <span className="text-xs text-yellow-300">
-              {score !== null ? (score * 100).toFixed(2) : 'N/A'}
+              {member.profile.score !== null ? (member.profile.score * 100).toFixed(2) : 'N/A'}
             </span>
             <span className="text-xs text-zinc-500 dark:text-zinc-400">
               {timestamp}
