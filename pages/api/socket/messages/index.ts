@@ -26,6 +26,10 @@ const getPerspectiveAPIScore = async (text: string): Promise<number> => {
   }
 };
 
+const calculateAverage = (currentScore: number, newScore: number): number => {
+  return ((currentScore + newScore) / 2);
+};
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponseServerIo,
@@ -91,6 +95,30 @@ export default async function handler(
     }
 
     const toxicityRating = await getPerspectiveAPIScore(content);
+
+    const userProfile = await db.profile.findUnique({
+      where: {
+        id: profile.id,
+      },
+    });
+
+    if (!userProfile) {
+      return res.status(404).json({ message: "User profile not found" });
+    }
+
+    const newAverageScore = calculateAverage(
+      userProfile.score || 0,
+      toxicityRating
+    );
+
+    const updatedProfile = await db.profile.update({
+      where: {
+        id: profile.id,
+      },
+      data: {
+        score: newAverageScore,
+      },
+    });
 
     const message = await db.message.create({
       data: {

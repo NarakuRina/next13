@@ -37,6 +37,7 @@ interface ChatItemProps {
   isUpdated: boolean;
   socketUrl: string;
   socketQuery: Record<string, string>;
+  score: number | null;
   pRate: number | null;
 };
 
@@ -67,6 +68,8 @@ export const ChatItem = ({
   const { onOpen } = useModal();
   const params = useParams();
   const router = useRouter();
+  const { profile } = member;
+  const { score } = profile;
 
   const onMemberClick = () => {
     if (member.id === currentMember.id) {
@@ -145,6 +148,9 @@ export const ChatItem = ({
                 {roleIconMap[member.role]}
               </ActionTooltip>
             </div>
+            <span className="text-xs text-yellow-300">
+              {score !== null ? (score * 100).toFixed(2) : 'N/A'}
+            </span>
             <span className="text-xs text-zinc-500 dark:text-zinc-400">
               {timestamp}
             </span>
